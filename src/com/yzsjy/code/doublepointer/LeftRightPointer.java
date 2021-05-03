@@ -29,6 +29,50 @@ public class LeftRightPointer {
     }
 
     /**
+     * 寻找左侧边界的二分搜索
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int leftBound(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;    //attention
+        while (left < right) {  //attention
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid;    //attention
+            }
+        }
+        return left;
+    }
+
+    public int rightBound(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;    //attention
+        while (left < right) {  //attention
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                left = mid + 1; //attention
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left - 1;    //attention
+    }
+
+    /**
      * 两数之和
      * @param nums
      * @param target
