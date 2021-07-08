@@ -1,5 +1,10 @@
 package com.yzsjy.code.leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 二叉搜索树
  * 二叉搜索树的中序遍历是有序的
@@ -165,5 +170,30 @@ public class BinarySearchTree {
             node = node.left;
         }
         return node;
+    }
+
+    public int maximumRemovals(String s, String p, int[] removable) {
+        int count = 0;
+        for (int i = 0; i < removable.length; i++) {
+            String m = s.substring(0, removable[i]) + s.substring(removable[i]);
+            if (isSubsequence(p, m)) {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+
+    }
+    public boolean isSubsequence(String s, String t) {
+        int n = s.length(), m = t.length();
+        int i = 0, j = 0;
+        while (i < n && j < m) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+            }
+            j++;
+        }
+        return i == n;
     }
 }

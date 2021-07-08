@@ -68,7 +68,7 @@ public class SlideWindows {
             right++;
             if (need.containsKey(c)) {
                 window.put(c, window.getOrDefault(c, 0) + 1);
-                if ((int) window.get(c) == (int) need.get(c)) {
+                if (window.get(c) == (int) need.get(c)) {
                     valid++;
                 }
             }
@@ -82,14 +82,14 @@ public class SlideWindows {
                 char d = s.charAt(left);
                 left++;
                 if (need.containsKey(d)) {
-                    if ((int) window.get(d) == (int) need.get(d)) {
+                    if (window.get(d) == (int) need.get(d)) {
                         valid--;
                     }
                     window.put(d, window.getOrDefault(d, 0) - 1);
                 }
             }
         }
-        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len + 1);
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 
     /**
@@ -119,7 +119,7 @@ public class SlideWindows {
             //进行窗口内的一系列更新
             if (need.containsKey(c)) {
                 window.put(c, window.getOrDefault(c, 0) + 1);
-                if ((int) window.get(c) == (int) need.get(c)) {
+                if (window.get(c) == (int) need.get(c)) {
                     valid++;
                 }
             }
