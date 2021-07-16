@@ -109,4 +109,30 @@ public class LeftRightPointer {
             right--;
         }
     }
+
+    /**
+     * 泛化二分查找边界问题
+     */
+    public int f(int x, int[] nums) {
+        return nums[x];
+    }
+
+    public int newLeftBound(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (f(mid, nums) == target) {
+                right = mid;
+            } else if (f(mid, nums) < target) {
+                left = mid + 1;
+            } else if (f(mid, nums) > target) {
+                right = mid;
+            }
+        }
+        return left;
+    }
 }
